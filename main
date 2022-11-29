@@ -1,0 +1,26 @@
+def get_value(object, key):
+  if "/" in key:
+    n_k = key.split("/")
+  m = None  
+  for i in n_k:
+    if m is None:
+      m = obj[i]
+      #{'b': {'c': 'd'}}
+    elif m is not None and isinstance(m, dict):
+      #{'b': {'c': 'd'}}
+      m = m[i]
+      #{'c': 'd'}
+      if not isinstance(m, dict):
+        return m
+get_value(obj, key)
+def get_value(object, key):
+  if "/" in key:
+    n_k = key.split("/")
+    for i in obj.keys():
+      if i in n_k:
+        for j in obj[i]:
+          if j in n_k:
+            for k in obj[i][j]:
+              if k in n_k:
+                print(obj[i][j][k])
+get_value(obj, key)
